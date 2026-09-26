@@ -1,5 +1,6 @@
 // No dependencies. Runs locally and before every GitHub Pages deployment.
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { existsSync, lstatSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -25,6 +26,15 @@ for (const [, raw] of html.matchAll(/\b(?:src|href|poster|data-src)="([^"]+)"/g)
 assert(!/gtag\(|googletagmanager|google-analytics|G-PYVRSFMDRL/.test(html), 'Upstream analytics must not be shipped');
 assert(!/Albert Author|Bernard D\.|Keunhong Park/.test(html), 'Template authors must be removed');
 assert(html.includes('Ant Group') && html.includes('Stanford University'));
+const logos = JSON.parse(readFileSync(join(site, 'static/logos/provenance.json'), 'utf8'));
+assert.equal(logos.source_page, 'https://ume-exo.github.io/');
+assert.equal(logos.assets.length, 2);
+for (const logo of logos.assets) {
+  assert(html.includes(`src="${logo.path}"`), `Missing affiliation logo: ${logo.path}`);
+  const data = readFileSync(join(site, logo.path));
+  assert.equal(data.length, logo.bytes, `Logo file size changed: ${logo.path}`);
+  assert.equal(createHash('sha256').update(data).digest('hex'), logo.sha256, `Logo no longer matches UME: ${logo.path}`);
+}
 for (const name of ['Zhixin Sun', 'Kairui Shi', 'Tianao Ren', 'Ming Yang', 'Mark Cutkosky', 'James Jingxi Xu']) assert(html.includes(name));
 assert(html.includes('https://nerfies.github.io/'), 'Keep the template attribution');
 assert(html.includes('creativecommons.org/licenses/by-sa/4.0'), 'Keep template license');

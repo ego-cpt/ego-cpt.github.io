@@ -14,6 +14,16 @@ The upstream analytics and unrelated links/media have been removed.
 `static/css/bulma.min.css` is Bulma 0.9.1, copyright 2020 Jeremy Thomas, under
 the MIT License. Its full license is in `static/css/BULMA-LICENSE.txt`.
 
+## Institutional logos
+
+The Ant Group and Stanford University logos are the exact original PNG files
+displayed on the [UME project website](https://ume-exo.github.io/), reused at
+the author's request to identify the confirmed author affiliations. They are
+not redrawn, recolored, or cropped. Original download URLs, byte sizes, and
+SHA-256 hashes are in [the logo provenance record](static/logos/provenance.json).
+These institutional marks retain their respective owners' rights; the
+website-template license does not grant additional trademark rights.
+
 Research videos, figures, datasets depicted in videos, and the paper are not
 relicensed by the website-template license. They retain their respective rights.
 This page does not redistribute any dataset archives, training environments,

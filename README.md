@@ -12,6 +12,10 @@ external JavaScript, or build service is required to view it.
   Ming Yang, Mark Cutkosky, James Jingxi Xu.
 - Tianao Ren and Mark Cutkosky: Stanford University. All other authors:
   Ant Group. No affiliations inferred from another project's website.
+- Header logos: the exact Ant Group and Stanford PNGs used by
+  <https://ume-exo.github.io/>, as requested. Original artwork and colors are
+  unchanged; local copies work without third-party image requests. Hashes and
+  sources are recorded in `static/logos/provenance.json` and checked on deploy.
 - The star after Zhixin Sun is retained exactly as supplied. Its meaning has
   not been supplied; the page does not invent an equal-contribution or
   corresponding-author note.
@@ -65,6 +69,15 @@ The canonical and social-sharing URLs point to this project site, not to
    validates local assets, packages only `index.html`, `static/`, `.nojekyll`,
    and `THIRD_PARTY.md`, then deploys the site.
 4. Inspect the completed **Deploy project website** action and its actual URL.
+
+The one-time Pages setting in step 2 requires repository administration
+access. A successful `git push` alone does not enable Pages. If the build
+fails at `actions/configure-pages` and the repository still reports
+`has_pages: false`, enable **GitHub Actions** at
+<https://github.com/Applewonder/EgoCPT.github.io/settings/pages>, then rerun
+the latest workflow at
+<https://github.com/Applewonder/EgoCPT.github.io/actions>.
+Do not treat an uploaded commit or a failed workflow as a live website.
 
 No push, repository visibility change, or public deployment is performed by
 the preparation scripts. The website uses relative paths so it works at either

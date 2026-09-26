@@ -62,6 +62,7 @@ try {
   await sleep(2500);
   assert(await evaluate('document.readyState === "complete"'), 'Document not ready');
   assert(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Desktop overflow');
+  assert(await evaluate('document.querySelectorAll(".institution-logos img").length === 2 && [...document.querySelectorAll(".institution-logos img")].every(i => i.complete && i.naturalWidth > 0)'), 'Affiliation logos not loaded');
   await shot('desktop.png');
   await evaluate('document.querySelector("#contacts").scrollIntoView()'); await sleep(500);
   await evaluate('for (const img of document.querySelectorAll(".image-comparison img")) img.loading = "eager"');
@@ -91,7 +92,7 @@ try {
   assert.deepEqual(missing, [], 'Broken images');
   assert.deepEqual(errors, [], 'Browser errors');
   const result = {passed: true, desktop_width: 1440, mobile_width: 390, project_subpath: true,
-    comparison_slider: true, copy_feedback: true, gallery_playback: true, reduced_motion: true, browser_errors: errors,
+    affiliation_logos: true, comparison_slider: true, copy_feedback: true, gallery_playback: true, reduced_motion: true, browser_errors: errors,
     screenshots: ['desktop.png', 'comparison.png', 'results.png', 'mobile.png']};
   writeFileSync(join(dir, 'browser_validation.json'), JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify(result, null, 2));
