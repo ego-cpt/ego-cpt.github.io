@@ -1,4 +1,5 @@
 // Publish only the static website, never the surrounding robotics workspace.
+import './verify_site.mjs';
 import { cpSync, existsSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -48,12 +48,12 @@
             <span class="paper-title">Learning Dexterous Manipulation from a Single Ego-Centric Video with Contact-Aware Optimization</span>
           </h1>
           <div class="publication-authors">
-            <span class="author-block">Zhixin Sun<sup>1,*</sup>,</span>
-            <span class="author-block">Kairui Shi<sup>1</sup>,</span>
-            <span class="author-block">Tianao Ren<sup>2</sup>,</span>
-            <span class="author-block">Ming Yang<sup>1</sup>,</span>
-            <span class="author-block">Mark Cutkosky<sup>2</sup>,</span>
-            <span class="author-block">James Jingxi Xu<sup>1</sup>
+            <span class="author-block"><a href="https://www.linkedin.com/in/zhixin-sun-867335292/" target="_blank" rel="noopener noreferrer">Zhixin Sun</a><sup>1,*</sup>,</span>
+            <span class="author-block"><a href="https://kairui-shi.github.io/" target="_blank" rel="noopener noreferrer">Kairui Shi</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://teoren0217.github.io/" target="_blank" rel="noopener noreferrer">Tianao Ren</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://users.ece.northwestern.edu/~mya671/" target="_blank" rel="noopener noreferrer">Ming Yang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://profiles.stanford.edu/mark-cutkosky" target="_blank" rel="noopener noreferrer">Mark Cutkosky</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://jxu.ai/" target="_blank" rel="noopener noreferrer">James Jingxi Xu</a><sup>1</sup>
             </span>
           </div>
           <div class="publication-affiliations">
@@ -61,10 +61,10 @@
             <span><sup>2</sup> Stanford University</span>
           </div>
           <div class="publication-links">
-            <a class="button is-rounded is-dark" href="static/paper/egocpt.pdf" target="_blank" rel="noopener">
-              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8zM14 3v6h5M8 13h8M8 17h6"/></svg>
-              <span>Paper</span>
-            </a>
+            <button class="button is-rounded code-pending paper-pending" type="button" disabled aria-label="Paper coming soon">
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>
+              <span>Paper <span class="pending-note">coming soon</span></span>
+            </button>
             <a class="button is-rounded is-dark" href="#video">
               <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>
               <span>Video</span>
@@ -104,7 +104,7 @@
           <h2 class="subtitle teaser-caption has-text-centered">
             From human demonstrations to <strong>robot-feasible interactions.</strong>
           </h2>
-          <p class="media-note has-text-centered">Hardware demonstrations: dual-arm and left-hand replay with right-hand glove teleoperation. Videos play at 1×.</p>
+          <p class="media-note has-text-centered">Dual-arm Franka + Sharpa. Videos play at 1x.</p>
         </div>
       </div>
     </section>
@@ -140,27 +140,122 @@
     <section class="section section-soft" id="contacts">
       <div class="container is-max-widescreen">
         <h2 class="title is-3 has-text-centered">See what changes at contact</h2>
-        <p class="section-intro">Drag the dividers to compare vanilla retargeting and contact-aware optimization.</p>
+        <p class="section-intro">Drag the dividers to see how EgoCPT changes hand–object contact. Each pair shows the same moment from the same view.</p>
         <div class="comparison-grid">
-          <article>
+          <article class="task-comparison featured-comparison" data-task="pour-cup">
             <div class="image-comparison" style="--split:50%">
               <img class="comparison-image" src="static/images/cup-after.png" alt="Optimized fingers contacting the cup surface" loading="lazy" width="2048" height="1229">
               <div class="before-layer"><img class="comparison-image" src="static/images/cup-before.png" alt="Retargeted fingers penetrating the cup wall" loading="lazy" width="2048" height="1229"></div>
               <span class="comparison-label label-before">Vanilla</span><span class="comparison-label label-after">EgoCPT</span>
               <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
-              <input type="range" min="0" max="100" value="50" aria-label="Compare cup contact before and after optimization" aria-valuetext="50 percent vanilla retargeting, 50 percent EgoCPT">
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare cup contact before and after optimization" aria-valuetext="50 percent vanilla retargeting, 50 percent EgoCPT">
             </div>
             <h3 class="detail-title">From penetration to surface contact</h3>
           </article>
-          <article>
+          <article class="task-comparison featured-comparison" data-task="pour-grasp">
             <div class="image-comparison" style="--split:50%">
               <img class="comparison-image" src="static/images/grasp-after.png" alt="New multi-finger grasp produced by contact-aware optimization" loading="lazy" width="2048" height="1229">
               <div class="before-layer"><img class="comparison-image" src="static/images/grasp-before.png" alt="Retargeted fingers with a gap to the bottle surface" loading="lazy" width="2048" height="1229"></div>
               <span class="comparison-label label-before">Vanilla</span><span class="comparison-label label-after">EgoCPT</span>
               <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
-              <input type="range" min="0" max="100" value="50" aria-label="Compare bottle grasp before and after optimization" aria-valuetext="50 percent vanilla retargeting, 50 percent EgoCPT">
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare bottle grasp before and after optimization" aria-valuetext="50 percent vanilla retargeting, 50 percent EgoCPT">
             </div>
             <h3 class="detail-title">A new grasp through contact-aware optimization</h3>
+          </article>
+        </div>
+        <h3 class="title is-4 has-text-centered contact-task-heading">Contact refinement across tasks</h3>
+        <div class="comparison-grid">
+          <article class="task-comparison" data-task="lint">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-lint-11-view0-after.png" alt="Lint rolling: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-lint-11-view0-before.png" alt="Lint rolling: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Lint rolling before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Lint rolling · EgoDex</h3>
+          </article>
+          <article class="task-comparison" data-task="sweep">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-sweep-focus-after.png" alt="Sweeping: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-sweep-focus-before.png" alt="Sweeping: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Sweeping before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Sweeping · EgoDex</h3>
+          </article>
+          <article class="task-comparison" data-task="scoop">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-scoop-2238-view0-after.png" alt="Scooping: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-scoop-2238-view0-before.png" alt="Scooping: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Scooping before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Scooping · EgoDex</h3>
+          </article>
+          <article class="task-comparison" data-task="pick">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-pick-focus-after.png" alt="Pick &amp; place: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-pick-focus-before.png" alt="Pick &amp; place: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Pick &amp; place before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Pick &amp; place · EgoDex</h3>
+          </article>
+        </div>
+        <div class="comparison-grid taco-contact-grid" id="taco-contacts" role="group" aria-label="TACO comparisons">
+          <article class="task-comparison" data-task="taco-pour">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-taco-pour-focus-after.png" alt="Pouring · TACO: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-taco-pour-focus-before.png" alt="Pouring · TACO: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Pouring · TACO before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Pouring · TACO</h3>
+          </article>
+          <article class="task-comparison" data-task="taco-ladle">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-taco-ladle-focus-after.png" alt="Bowl &amp; ladle · TACO: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-taco-ladle-focus-before.png" alt="Bowl &amp; ladle · TACO: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Bowl &amp; ladle · TACO before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Bowl &amp; ladle · TACO</h3>
+          </article>
+          <article class="task-comparison" data-task="taco-pick">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-taco-pick-focus-after.png" alt="Container manipulation · TACO: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-taco-pick-focus-before.png" alt="Container manipulation · TACO: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Container manipulation · TACO before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Container manipulation · TACO</h3>
+          </article>
+          <article class="task-comparison" data-task="taco-lint">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-taco-lint-taco_07-view-70-after.png" alt="Lint rolling · TACO: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-taco-lint-taco_07-view-70-before.png" alt="Lint rolling · TACO: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Lint rolling · TACO before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Lint rolling · TACO</h3>
+          </article>
+          <article class="task-comparison" data-task="taco-brush">
+            <div class="image-comparison" style="--split:50%">
+              <img class="comparison-image" src="static/images/contact-taco-brush-taco_12-view-70-after.png" alt="Surface brushing · TACO: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
+              <div class="before-layer"><img class="comparison-image" src="static/images/contact-taco-brush-taco_12-view-70-before.png" alt="Surface brushing · TACO: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
+              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
+              <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare Surface brushing · TACO before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
+            </div>
+            <h3 class="detail-title">Surface brushing · TACO</h3>
           </article>
         </div>
       </div>
@@ -171,19 +266,19 @@
         <h2 class="title is-3 has-text-centered">Multiple tasks. A shared formulation.</h2>
         <p class="section-intro">Robot hand–object trajectories reconstructed from egocentric demonstrations.</p>
         <div class="results-carousel task-gallery" aria-label="EgoDex reconstruction examples">
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/pour.jpg" aria-label="Pouring reconstruction"><source src="static/videos/pour.mp4" type="video/mp4"></video><figcaption>Pouring</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/lint.jpg" aria-label="Lint rolling reconstruction"><source src="static/videos/lint.mp4" type="video/mp4"></video><figcaption>Lint Rolling</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/sweep.jpg" aria-label="Sweeping reconstruction"><source src="static/videos/sweep.mp4" type="video/mp4"></video><figcaption>Sweeping</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/scoop.jpg" aria-label="Ice scooping reconstruction"><source src="static/videos/scoop.mp4" type="video/mp4"></video><figcaption>Scooping</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/pick.jpg" aria-label="Stapler pick and place reconstruction"><source src="static/videos/pick.mp4" type="video/mp4"></video><figcaption>Pick &amp; Place</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/pour-1080p.jpg" aria-label="Pouring reconstruction"><source src="static/videos/pour-1080p.mp4" type="video/mp4"></video><figcaption>Pouring</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/lint-1080p.jpg" aria-label="Lint rolling reconstruction"><source src="static/videos/lint-1080p.mp4" type="video/mp4"></video><figcaption>Lint Rolling</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/sweep-1080p.jpg" aria-label="Sweeping reconstruction"><source src="static/videos/sweep-1080p.mp4" type="video/mp4"></video><figcaption>Sweeping</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/scoop-1080p.jpg" aria-label="Ice scooping reconstruction"><source src="static/videos/scoop-1080p.mp4" type="video/mp4"></video><figcaption>Scooping</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/pick-held-start-1080p.jpg" aria-label="Stapler pick and place reconstruction"><source src="static/videos/pick-held-start-1080p.mp4" type="video/mp4"></video><figcaption>Pick &amp; Place</figcaption></figure>
         </div>
-        <p class="media-note has-text-centered">Reconstructed reference trajectories visualized in Isaac Sim. 1× playback; the stapler excerpt ends before hand release.</p>
+        <p class="media-note has-text-centered">Reconstructed reference trajectories visualized in Isaac Sim at 1×.</p>
         <h3 class="title is-4 has-text-centered taco-heading">From video reconstruction to motion-capture inputs</h3>
         <p class="section-intro">The same optimization also operates on high-quality TACO hand and object trajectories.</p>
         <div class="taco-gallery">
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-pour.jpg" aria-label="TACO pouring reconstruction"><source src="static/videos/taco-pour.mp4" type="video/mp4"></video><figcaption>Pouring</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-ladle.jpg" aria-label="TACO bowl and ladle reconstruction"><source src="static/videos/taco-ladle.mp4" type="video/mp4"></video><figcaption>Bowl &amp; Ladle</figcaption></figure>
-          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-pick.jpg" aria-label="TACO container manipulation reconstruction"><source src="static/videos/taco-pick.mp4" type="video/mp4"></video><figcaption>Container Manipulation</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-pour-1080p.jpg" aria-label="TACO pouring reconstruction"><source src="static/videos/taco-pour-1080p.mp4" type="video/mp4"></video><figcaption>Pouring</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-ladle-1080p.jpg" aria-label="TACO bowl and ladle reconstruction"><source src="static/videos/taco-ladle-1080p.mp4" type="video/mp4"></video><figcaption>Bowl &amp; Ladle</figcaption></figure>
+          <figure class="result-card"><video class="auto-video" muted loop playsinline controls preload="none" poster="static/images/taco-pick-1080p.jpg" aria-label="TACO container manipulation reconstruction"><source src="static/videos/taco-pick-1080p.mp4" type="video/mp4"></video><figcaption>Container Manipulation</figcaption></figure>
         </div>
         <div class="wall-block">
           <video class="auto-video success-wall" muted loop playsinline controls preload="none" poster="static/images/success-wall.jpg" aria-label="A wall of reconstructed hand-object interactions"><source src="static/videos/success-wall.mp4" type="video/mp4"></video>
@@ -196,10 +291,10 @@
       <div class="container is-max-desktop">
         <h2 class="title is-3 has-text-centered">Video</h2>
         <video class="full-video" controls playsinline preload="none" poster="static/images/video-poster.jpg" aria-label="EgoCPT supplementary video">
-          <source src="static/videos/overview.mp4" type="video/mp4">
-          Your browser does not support embedded video. <a href="static/videos/overview.mp4">Download the video.</a>
+          <source src="static/videos/overview-1080p.mp4" type="video/mp4">
+          Your browser does not support embedded video. <a href="static/videos/overview-1080p.mp4">Download the video.</a>
         </video>
-        <div class="video-download"><a href="static/videos/overview.mp4" download>Download video</a><span>2 min 53.5 sec · 720p</span></div>
+        <div class="video-download"><a href="static/videos/overview-1080p.mp4" download>Download video</a><span>2 min 53.5 sec · 1080p</span></div>
       </div>
     </section>
 
@@ -223,7 +318,7 @@
       <p class="footer-name">EgoCPT <span>Ant Group · Stanford University</span></p>
       <p>Website adapted from <a href="https://nerfies.github.io/" target="_blank" rel="noopener">NeRFies</a>.
         Template adaptations are licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a>.</p>
-      <p class="media-note">Research media and the paper retain their respective rights. <a href="THIRD_PARTY.md">Attribution</a></p>
+      <p class="media-note">Research media retain their respective rights. <a href="THIRD_PARTY.md">Attribution</a></p>
     </div>
   </footer>
 </body>

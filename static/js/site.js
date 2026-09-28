@@ -2,10 +2,46 @@
 "use strict";
 
 document.querySelectorAll(".image-comparison input").forEach((slider) => {
+  const comparison = slider.closest(".image-comparison");
+  const beforeLabel = comparison.querySelector(".label-before").textContent.trim();
+  const afterLabel = comparison.querySelector(".label-after").textContent.trim();
   slider.addEventListener("input", () => {
-    slider.closest(".image-comparison").style.setProperty("--split", `${slider.value}%`);
-    slider.setAttribute("aria-valuetext", `${slider.value} percent vanilla retargeting, ${100 - Number(slider.value)} percent EgoCPT`);
+    comparison.style.setProperty("--split", `${slider.value}%`);
+    slider.setAttribute("aria-valuetext", `${Math.round(slider.value)} percent ${beforeLabel}, ${Math.round(100 - Number(slider.value))} percent ${afterLabel}`);
   });
+  // Direct manipulation: no easing or delayed animation between finger and divider.
+  let pointer = null, grabOffset = 0;
+  const track = (event) => {
+    const rect = comparison.getBoundingClientRect();
+    slider.value = Math.max(0, Math.min(100, (event.clientX - rect.left - grabOffset) / rect.width * 100));
+    slider.dispatchEvent(new Event("input", {bubbles: true}));
+  };
+  // The wrapper owns pointer gestures; the native range retains keyboard and
+  // assistive-technology control while sharing the same value and focus state.
+  comparison.addEventListener("pointerdown", (event) => {
+    if (!event.isPrimary || (event.pointerType === "mouse" && event.button !== 0)) return;
+    event.preventDefault();
+    slider.focus({preventScroll: true});
+    const rect = comparison.getBoundingClientRect();
+    const offset = event.clientX - (rect.left + rect.width * Number(slider.value) / 100);
+    grabOffset = Math.abs(offset) <= 24 ? offset : 0;
+    pointer = event.pointerId;
+    comparison.setPointerCapture(pointer);
+    comparison.classList.add("is-dragging");
+    track(event);
+  });
+  comparison.addEventListener("pointermove", (event) => {
+    if (event.pointerId === pointer) track(event);
+  });
+  const finish = (event) => {
+    if (event.pointerId !== pointer) return;
+    pointer = null;
+    comparison.classList.remove("is-dragging");
+    if (comparison.hasPointerCapture(event.pointerId)) comparison.releasePointerCapture(event.pointerId);
+  };
+  comparison.addEventListener("pointerup", finish);
+  comparison.addEventListener("pointercancel", finish);
+  comparison.addEventListener("lostpointercapture", finish);
 });
 
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

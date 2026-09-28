@@ -26,6 +26,7 @@ for (const [, raw] of html.matchAll(/\b(?:src|href|poster|data-src)="([^"]+)"/g)
 assert(!/gtag\(|googletagmanager|google-analytics|G-PYVRSFMDRL/.test(html), 'Upstream analytics must not be shipped');
 assert(!/Albert Author|Bernard D\.|Keunhong Park/.test(html), 'Template authors must be removed');
 assert(html.includes('Ant Group') && html.includes('Stanford University'));
+assert(!html.toLowerCase().includes('.pdf'), 'Paper download links are withheld during double-blind review');
 const logos = JSON.parse(readFileSync(join(site, 'static/logos/provenance.json'), 'utf8'));
 assert.equal(logos.source_page, 'https://ume-exo.github.io/');
 assert.equal(logos.assets.length, 2);
@@ -45,6 +46,7 @@ function scan(folder) {
     assert(!stat.isSymbolicLink(), `Public asset cannot be a symlink: ${file}`);
     if (stat.isDirectory()) scan(file);
     else {
+      assert(!name.toLowerCase().endsWith('.pdf'), `Review manuscript/PDF cannot be published: ${file}`);
       assert(stat.size < 95 * 1024 * 1024, `Asset too large for regular GitHub files: ${file}`);
       assert(!/\.(npz|pt|pth|ckpt|pem|key|env|log)$/.test(name), `Unexpected experiment/secret file: ${file}`);
       bytes += stat.size; files++;

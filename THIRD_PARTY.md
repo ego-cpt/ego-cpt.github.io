@@ -24,7 +24,7 @@ SHA-256 hashes are in [the logo provenance record](static/logos/provenance.json)
 These institutional marks retain their respective owners' rights; the
 website-template license does not grant additional trademark rights.
 
-Research videos, figures, datasets depicted in videos, and the paper are not
+Research videos, figures, and datasets depicted in videos are not
 relicensed by the website-template license. They retain their respective rights.
 This page does not redistribute any dataset archives, training environments,
 credentials, or raw experiments. The public research-code URL and arXiv

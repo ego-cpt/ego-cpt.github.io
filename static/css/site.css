@@ -1,7 +1,7 @@
 /* EgoCPT adaptations of the NeRFies project-page template (CC BY-SA 4.0). */
 :root { --ink: #26292e; --muted: #656b73; --blue: #2070b2; --soft: #f6f7f8; --line: #e4e7eb; }
 html { scroll-behavior: smooth; scroll-padding-top: 28px; }
-body { font-family: "Noto Sans", "Helvetica Neue", Arial, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; font-optical-sizing: auto; }
 .title { color: var(--ink); letter-spacing: -.025em; }
 a { color: var(--blue); }
 a:hover { color: #134873; }
@@ -32,6 +32,9 @@ sup { font-size: .65em; vertical-align: super; line-height: 0; }
 .button.is-dark { background: #33363b; }
 .code-pending { background: #f3f4f5; color: #555b63; border-color: #e8eaed; cursor: default; }
 .pending-note { font-size: 11px; margin-left: 4px; color: #737981; }
+.publication-links .button { min-height: 44px; }
+.publication-links button[disabled] { opacity: 1; cursor: default; }
+.button:not([disabled]):active { transform: scale(.97); }
 .link-icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .container.is-max-widescreen { max-width: 1152px; }
 .teaser .hero-body { padding: 20px 24px 42px; }
@@ -56,21 +59,36 @@ sup { font-size: .65em; vertical-align: super; line-height: 0; }
 .method-steps h3 { font-size: 19px; font-weight: 600; margin: 7px 0; }
 .method-steps p { font-size: 15px; line-height: 1.7; color: var(--muted); }
 .comparison-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }
-.image-comparison { position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 2048/1229; background: #d4d5d6; }
+.image-comparison { --comparison-bg: #d4d5d6; position: relative; overflow: hidden; border-radius: 10px; aspect-ratio: 2048/1229; background: var(--comparison-bg); cursor: ew-resize; touch-action: pan-y; user-select: none; }
 .comparison-image { width: 100%; height: 100%; object-fit: contain; display: block; }
-.before-layer { position: absolute; inset: 0; clip-path: inset(0 calc(100% - var(--split)) 0 0); }
+/* Keep the two scenes in disjoint halves, including fully hidden endpoints. */
+.image-comparison > .comparison-image { clip-path: inset(0 0 0 var(--split)); }
+/* The renders have alpha: clip an opaque scene, not just its visible meshes. */
+.before-layer { position: absolute; inset: 0; background: var(--comparison-bg); clip-path: inset(0 calc(100% - var(--split)) 0 0); }
 .comparison-label { position: absolute; top: 12px; border-radius: 5px; padding: 5px 9px; background: rgba(255,255,255,.93); color: #333940; font-size: 12px; font-weight: 600; pointer-events: none; }
 .label-before { left: 12px; } .label-after { right: 12px; }
 .comparison-divider { position: absolute; top: 0; bottom: 0; left: var(--split); width: 2px; background: white; box-shadow: 0 0 4px #0003; pointer-events: none; transform: translateX(-1px); }
 .comparison-divider span { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 50%; background: white; color: #444; display: grid; place-content: center; font-size: 22px; box-shadow: 0 2px 10px #0002; white-space: pre; }
-.image-comparison input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: ew-resize; touch-action: pan-y; }
+.image-comparison input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; pointer-events: none; }
 .image-comparison:focus-within { outline: 3px solid #2680c2; outline-offset: 4px; }
 .detail-title { font-size: 17px; text-align: center; margin-top: 16px; font-weight: 500; }
+.task-comparison { background: white; border-radius: 16px; padding: 10px 10px 18px; }
+.task-comparison .image-comparison { aspect-ratio: 16/9; --comparison-bg: #d4d5d6; }
+.task-comparison.featured-comparison .image-comparison { aspect-ratio: 5/3; --comparison-bg: #d4d5d6; }
+.contact-task-heading { margin: 42px auto 24px; }
+.taco-contact-grid { margin-top: 24px; }
+@media (min-width: 601px) { .comparison-grid > .task-comparison:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc((100% - 24px) / 2); justify-self: center; } }
+.task-comparison .detail-title { margin-top: 14px; line-height: 1.4; letter-spacing: -.015em; }
+.comparison-label { backdrop-filter: blur(12px); letter-spacing: .01em; }
+.comparison-divider span { width: 44px; height: 44px; }
+.image-comparison.is-dragging .comparison-divider span { transform: translate(-50%,-50%) scale(1.08); box-shadow: 0 3px 14px #0004; }
+@media (prefers-reduced-transparency: reduce) { .comparison-label { background: white; backdrop-filter: none; } }
+@media (prefers-contrast: more) { .comparison-label { background: white; border: 1px solid #26292e; } }
 .task-gallery { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 22px; overflow: visible; }
 .task-gallery .result-card { grid-column: span 2; }
 .task-gallery .result-card:nth-last-child(-n+2) { grid-column: span 3; }
 .result-card { min-width: 0; }
-.result-card video { display: block; width: 100%; aspect-ratio: 16/10; object-fit: contain; background: #62676d; border-radius: 9px; }
+.result-card video { display: block; width: 100%; aspect-ratio: 16/9; object-fit: contain; background: #62676d; border-radius: 9px; }
 .result-card figcaption { text-align: center; font-size: 16px; font-weight: 600; margin-top: 12px; }
 .taco-heading { margin-top: 54px; line-height: 1.4; }
 .taco-gallery { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 22px; }

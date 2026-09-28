@@ -1,5 +1,7 @@
 // Optional, workspace-local asset preparation. No network or hardware access.
 // Existing public assets are preserved; original recordings are never changed.
+// This bootstraps base assets. Finish with the native-HD preparation/render/
+// installation scripts documented in README.md for the current contact gallery.
 import { constants, copyFileSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
@@ -58,7 +60,7 @@ function poster(videoName, destName, time = 1) {
   record(source, output, {method: 'video frame extraction', time_s: time});
 }
 
-copy('ICRA_Submission (12).pdf', 'paper/egocpt.pdf');
+// The double-blind review manuscript must not be copied into public assets.
 copy('icra_paper/figures/pipeline_v6/pipeline.png', 'images/pipeline.png');
 for (const [name, folder, variant] of [
   ['cup-before', 'cup_full', 'initial'], ['cup-after', 'cup_full', 'episode'],
@@ -84,13 +86,13 @@ encode(v(11, 'renders/pick_0/pick_0_isaac.mp4'), 'videos/pick.mp4', {duration: 3
 poster('pick', 'pick');
 encode(v(16, 'light/deliverables/EgoCPT_success_wall_4K.mp4'), 'videos/success-wall.mp4', {filter: 'scale=1920:1080', crf: 24});
 poster('success-wall', 'success-wall', 2);
-copy(v(16, 'light/deliverables/EgoCPT_ICRA_submission_720p.mp4'), 'videos/overview.mp4');
-poster('overview', 'video-poster', 25);
+copy(v(16, 'light/deliverables/EgoCPT_ICRA_1080p_master.mp4'), 'videos/overview-1080p.mp4');
+poster('overview-1080p', 'video-poster', 25);
 
 mkdirSync(join(site, '_local'), {recursive: true});
 writeFileSync(join(site, '_local', 'asset_manifest.json'), JSON.stringify({
   created_at: new Date().toISOString(), sources_unchanged: true,
-  paper_source: 'ICRA_Submission (12).pdf', submission_video_version: 16,
+  paper_withheld_for_review: true, submission_video_version: 16,
   hardware_mode: 'scripted arms and left hand; right glove teleoperation',
   render_mode: 'archived reconstructed references; not new physics rollouts',
   records,
