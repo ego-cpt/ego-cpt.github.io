@@ -9,7 +9,7 @@ const port = Number(process.env.PORT || 8765);
 const mime = {'.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png',
   '.jpg': 'image/jpeg', '.mp4': 'video/mp4', '.pdf': 'application/pdf', '.md': 'text/plain; charset=utf-8',
-  '.txt': 'text/plain; charset=utf-8'};
+  '.txt': 'text/plain; charset=utf-8', '.xml': 'application/xml; charset=utf-8'};
 
 createServer((req, res) => {
   if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405); res.end(); return; }
@@ -18,7 +18,7 @@ createServer((req, res) => {
     // Exercise both root and GitHub project-site URL layouts in local QA.
     if (name.startsWith('/EgoCPT.github.io/')) name = name.slice('/EgoCPT.github.io'.length);
     if (name === '/') name = '/index.html';
-    if (!(name === '/index.html' || name === '/THIRD_PARTY.md' || name.startsWith('/static/'))) {
+    if (!(name === '/index.html' || name === '/sitemap.xml' || name === '/googlefc25602e21eda673.html' || name === '/THIRD_PARTY.md' || name.startsWith('/static/'))) {
       res.writeHead(404); res.end('Not found'); return;
     }
     const path = resolve(root, `.${name}`);

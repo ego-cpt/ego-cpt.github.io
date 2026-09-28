@@ -103,8 +103,9 @@ The canonical and social-sharing URLs point to this project site, not to
    not change the "coming soon" Paper button.
 2. In the repository's **Settings → Pages**, set **Source → GitHub Actions**.
 3. Commit these website files and push `main`. The included Pages workflow
-   validates local assets, packages only `index.html`, `static/`, `.nojekyll`,
-   and `THIRD_PARTY.md`, then deploys the site.
+   validates local assets, packages only `index.html`, `sitemap.xml`, the exact
+   Google ownership-verification file, `static/`, `.nojekyll`, and
+   `THIRD_PARTY.md`, then deploys the site.
 4. Inspect the completed **Deploy project website** action and its actual URL.
 
 The one-time Pages setting in step 2 requires repository administration
@@ -123,6 +124,32 @@ Paper and Code explicitly say "coming soon".
 
 Official deployment documentation:
 <https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages>
+
+## Search indexing
+
+The canonical URL is `https://applewonder.github.io/EgoCPT.github.io/`.
+`sitemap.xml` lists that single page; section fragments and duplicate
+`index.html` URLs are not separate sitemap entries. Publishing the site or
+sitemap does not itself submit an indexing request or guarantee search results.
+
+To request Google indexing, the owner can add this exact URL as a **URL-prefix**
+property in [Search Console](https://search.google.com/search-console/welcome).
+The author supplied **HTML file** verification on 2026-09-28:
+`googlefc25602e21eda673.html` contains the exact Google-provided verification
+line and is published at the project root. Click **Verify** in the owner's
+Search Console once that file is live. Keep the file available for future
+ownership checks. If the property is already verified, reuse it.
+Then submit `sitemap.xml` under **Sitemaps** and inspect the canonical URL using
+**URL inspection → Request indexing**. This requires the owner's Google account;
+publishing through GitHub does not provide Search Console access.
+
+Google can take days to weeks to crawl a new or updated page, and a request
+does not guarantee inclusion. See [Google's recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl)
+and [ownership verification instructions](https://support.google.com/webmasters/answer/9008080).
+For this project site, Google checks `https://applewonder.github.io/robots.txt`,
+not a file under `/EgoCPT.github.io/`. The host-level robots file returned 404
+during the 2026-09-28 audit, which Google treats as no crawl restrictions; no
+ineffective subdirectory robots file is added.
 
 ## Edit and regenerate
 

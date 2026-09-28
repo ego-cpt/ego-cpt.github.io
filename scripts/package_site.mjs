@@ -8,7 +8,7 @@ const site = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const output = resolve(site, '_site');
 if (existsSync(output)) throw new Error('_site already exists; choose a clean checkout for packaging.');
 mkdirSync(output);
-for (const name of ['index.html', 'static', '.nojekyll', 'THIRD_PARTY.md']) {
+for (const name of ['index.html', 'sitemap.xml', 'googlefc25602e21eda673.html', 'static', '.nojekyll', 'THIRD_PARTY.md']) {
   cpSync(resolve(site, name), resolve(output, name), {recursive: true, errorOnExist: true, force: false});
 }
 console.log(`Packaged static site: ${output}`);
