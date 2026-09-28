@@ -55,7 +55,7 @@ for kind, ext in [('videos', 'mp4'), ('images', 'jpg')]:
     assert html.count(before) == 1
     html = html.replace(before, after, 1)
 before = 'Reconstructed reference trajectories visualized in Isaac Sim. 1× playback; the stapler excerpt ends before hand release.'
-after = 'Reconstructed reference trajectories visualized in Isaac Sim at 1×.'
+after = 'Visualized in Isaac Sim at 1×'
 assert html.count(before) == 1
 html = html.replace(before, after, 1)
 page.write_text(html)
