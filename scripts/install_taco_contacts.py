@@ -65,7 +65,8 @@ for group in ['lint', 'brush']:
             <div class="image-comparison" style="--split:50%">
               <img class="comparison-image" src="{row['images']['after']['path']}" alt="{title}: EgoCPT hand–object contact" loading="lazy" width="1920" height="1080">
               <div class="before-layer"><img class="comparison-image" src="{row['images']['before']['path']}" alt="{title}: input retargeted hand pose at the same time" loading="lazy" width="1920" height="1080"></div>
-              <span class="comparison-label label-before">Before</span><span class="comparison-label label-after">After</span>
+              <span class="comparison-label-layer label-layer-before"><span class="comparison-label label-before">Before</span></span>
+              <span class="comparison-label-layer label-layer-after"><span class="comparison-label label-after">After</span></span>
               <span class="comparison-divider" aria-hidden="true"><span>‹ ›</span></span>
               <input type="range" min="0" max="100" step="0.1" value="50" aria-label="Compare {title} before and after contact optimization" aria-valuetext="50 percent Before, 50 percent After">
             </div>
