@@ -16,7 +16,7 @@ for (const [, raw] of html.matchAll(/\b(?:src|href|poster|data-src)="([^"]+)"/g)
     assert(ids.includes(raw.slice(1)), `Missing fragment target: ${raw}`);
   } else {
     assert(!raw.startsWith('/'), `Root-relative URL breaks project Pages deployment: ${raw}`);
-    const path = resolve(site, decodeURIComponent(raw.split('#')[0]));
+    const path = resolve(site, decodeURIComponent(raw.split(/[?#]/)[0]));
     assert(path.startsWith(site + sep), `Reference leaves website: ${raw}`);
     assert(existsSync(path), `Missing local asset: ${raw}`);
     assert(statSync(path).size > 0, `Empty local asset: ${raw}`);
