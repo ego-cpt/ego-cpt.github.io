@@ -21,6 +21,10 @@ displayed on the [UME project website](https://ume-exo.github.io/), reused at
 the author's request to identify the confirmed author affiliations. They are
 not redrawn, recolored, or cropped. Original download URLs, byte sizes, and
 SHA-256 hashes are in [the logo provenance record](static/logos/provenance.json).
+The University at Buffalo logo is the original primary lockup with SUNY modifier
+from its [official brand page](https://www.buffalo.edu/brand/identity/university-logo-and-marks.html).
+The source file is unchanged; CSS hides only blank side margins while preserving
+the complete logo and university name.
 These institutional marks retain their respective owners' rights; the
 website-template license does not grant additional trademark rights.
 

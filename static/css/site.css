@@ -14,11 +14,13 @@ a:focus-visible, button:focus-visible { outline: 3px solid #489cdc; outline-offs
 .nav-links a { color: var(--muted); }
 .nav-links a:hover { color: var(--blue); }
 .publication-header .hero-body { padding: 35px 24px 22px; }
-.institution-logos { display: flex; align-items: center; justify-content: center; gap: clamp(28px, 6vw, 64px); margin: 0 auto 32px; }
-.institution-logos a { display: block; flex: 0 1 auto; }
+.institution-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px clamp(28px, 4vw, 48px); margin: 0 auto 32px; }
+.institution-logos a { display: block; flex: 0 0 auto; max-width: 100%; }
 .institution-logos img { display: block; height: auto; max-width: 100%; }
 .ant-group-logo { width: 210px; }
 .stanford-logo { width: 260px; }
+/* Trim only the official preview's blank side margins; preserve the complete mark. */
+.institution-logos .buffalo-logo { width: 260px; height: 95px; object-fit: cover; }
 .publication-title { font-family: "Google Sans", "Helvetica Neue", Arial, sans-serif; line-height: 1.17; font-weight: 600; margin-bottom: 26px !important; }
 .project-name { display: block; font-size: 62px; letter-spacing: -.045em; margin-bottom: 12px; }
 .paper-title { display: block; font-size: 38px; line-height: 1.2; max-width: 1000px; margin: 0 auto; text-wrap: balance; }
@@ -26,7 +28,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #489cdc; outline-offs
 .author-block { margin: 0 3px; }
 sup { font-size: .65em; vertical-align: super; line-height: 0; }
 .publication-authors sup { margin-left: 2px; color: var(--ink); }
-.publication-affiliations { display: flex; justify-content: center; gap: 28px; margin: 12px 0 22px; font-size: 20px; }
+.publication-affiliations { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin: 12px 0 22px; font-size: 20px; }
 .publication-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; }
 .publication-links .button { font-size: 15px; height: 40px; padding: 0 20px; gap: 8px; }
 .button.is-dark { background: #33363b; }
@@ -121,13 +123,14 @@ sup { font-size: .65em; vertical-align: super; line-height: 0; }
   .project-nav { padding: 14px 18px; min-height: 54px; }
   .nav-links { gap: 14px; font-size: 12px; }
   .publication-header .hero-body { padding: 22px 18px 18px; }
-  .institution-logos { gap: 28px; margin-bottom: 24px; }
+  .institution-logos { gap: 16px 28px; margin-bottom: 24px; }
   .ant-group-logo { width: 125px; }
   .stanford-logo { width: 165px; }
+  .institution-logos .buffalo-logo { width: 180px; height: 66px; }
   .project-name { font-size: 45px; margin-bottom: 14px; }
   .paper-title { font-size: 27px; line-height: 1.22; }
   .publication-authors { font-size: 16px; line-height: 1.9; }
-  .publication-affiliations { font-size: 16px; gap: 18px; }
+  .publication-affiliations { font-size: 16px; gap: 8px 18px; }
   .publication-links { gap: 7px; }
   .publication-links .button { font-size: 13px; padding: 0 14px; }
   .pending-note { font-size: 10px; }

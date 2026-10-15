@@ -148,7 +148,7 @@ try {
   await sleep(2500);
   assert(await evaluate('document.readyState === "complete"'), 'Document not ready');
   assert(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Desktop overflow');
-  assert(await evaluate('document.querySelectorAll(".institution-logos img").length === 2 && [...document.querySelectorAll(".institution-logos img")].every(i => i.complete && i.naturalWidth > 0)'), 'Affiliation logos not loaded');
+  assert(await evaluate('document.querySelectorAll(".institution-logos img").length === 3 && [...document.querySelectorAll(".institution-logos img")].every(i => i.complete && i.naturalWidth > 0)'), 'Affiliation logos not loaded');
   assert(await evaluate('document.querySelector("a.paper-link")?.href === "https://arxiv.org/abs/2610.17572" && !document.querySelector(".paper-link").textContent.includes("coming soon")'), 'Paper arXiv link missing');
   assert.equal(await evaluate('document.querySelectorAll(".task-comparison").length'), 11);
   assert.deepEqual(await evaluate('[...document.querySelectorAll(".taco-contact-grid .task-comparison")].map(card => card.dataset.task)'),

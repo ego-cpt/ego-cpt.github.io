@@ -25,16 +25,16 @@ for (const [, raw] of html.matchAll(/\b(?:src|href|poster|data-src)="([^"]+)"/g)
 }
 assert(!/gtag\(|googletagmanager|google-analytics|G-PYVRSFMDRL/.test(html), 'Upstream analytics must not be shipped');
 assert(!/Albert Author|Bernard D\.|Keunhong Park/.test(html), 'Template authors must be removed');
-assert(html.includes('Ant Group') && html.includes('Stanford University'));
+assert(html.includes('Ant Group') && html.includes('University at Buffalo, SUNY') && html.includes('Stanford University'));
 assert(!html.toLowerCase().includes('.pdf'), 'Paper download links are withheld during double-blind review');
 const logos = JSON.parse(readFileSync(join(site, 'static/logos/provenance.json'), 'utf8'));
 assert.equal(logos.source_page, 'https://ume-exo.github.io/');
-assert.equal(logos.assets.length, 2);
+assert.equal(logos.assets.length, 3);
 for (const logo of logos.assets) {
   assert(html.includes(`src="${logo.path}"`), `Missing affiliation logo: ${logo.path}`);
   const data = readFileSync(join(site, logo.path));
   assert.equal(data.length, logo.bytes, `Logo file size changed: ${logo.path}`);
-  assert.equal(createHash('sha256').update(data).digest('hex'), logo.sha256, `Logo no longer matches UME: ${logo.path}`);
+  assert.equal(createHash('sha256').update(data).digest('hex'), logo.sha256, `Logo no longer matches its recorded source: ${logo.path}`);
 }
 for (const name of ['Zhixin Sun', 'Kairui Shi', 'Tianao Ren', 'Ming Yang', 'Mark Cutkosky', 'James Jingxi Xu']) assert(html.includes(name));
 assert(html.includes('https://nerfies.github.io/'), 'Keep the template attribution');

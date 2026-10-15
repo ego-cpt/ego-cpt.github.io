@@ -1,7 +1,7 @@
 {
   "source_page": "https://ume-exo.github.io/",
   "retrieved_at": "2026-09-26T00:28:52Z",
-  "usage": "Author affiliations, as confirmed by the project author. Original files reused without recoloring, cropping, or redrawing; only CSS display size changes.",
+  "usage": "Author affiliations, as confirmed by the project author. Original files preserved without recoloring or redrawing; CSS sizes the marks and hides only blank side margins of the Buffalo preview.",
   "rights": "Institutional logos retain their respective owners' rights and are not relicensed by the website-template license.",
   "assets": [
     {
@@ -15,6 +15,14 @@
       "source_url": "https://ume-exo.github.io/static/logos/stanford_logo.png",
       "bytes": 29410,
       "sha256": "9ce2257ce2bd61e5d14ea5f781d2c864d13e348707c7d8be0a0dfccdfa3f5fe0"
+    },
+    {
+      "path": "static/logos/buffalo.jpg",
+      "source_page": "https://www.buffalo.edu/brand/identity/university-logo-and-marks.html",
+      "source_url": "https://www.buffalo.edu/content/www/brand/identity/university-logo-and-marks/jcr:content/par/image_8.img.894.auto.q65.jpg/1762792289978.jpg",
+      "retrieved_at": "2026-10-15T01:59:32.625Z",
+      "bytes": 8033,
+      "sha256": "739b3f71ab1571ec1dcdd4d08a0dab64156e39d063455f9f3f4943f05bdfc771"
     }
   ]
 }
