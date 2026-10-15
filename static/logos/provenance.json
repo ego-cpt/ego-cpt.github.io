@@ -1,7 +1,7 @@
 {
   "source_page": "https://ume-exo.github.io/",
   "retrieved_at": "2026-09-26T00:28:52Z",
-  "usage": "Author affiliations, as confirmed by the project author. Original files preserved without recoloring or redrawing; CSS sizes the marks and hides only blank side margins of the Buffalo preview.",
+  "usage": "Author affiliations, as confirmed by the project author. Original files preserved without recoloring, cropping, or redrawing; only CSS display size changes.",
   "rights": "Institutional logos retain their respective owners' rights and are not relicensed by the website-template license.",
   "assets": [
     {
@@ -17,12 +17,15 @@
       "sha256": "9ce2257ce2bd61e5d14ea5f781d2c864d13e348707c7d8be0a0dfccdfa3f5fe0"
     },
     {
-      "path": "static/logos/buffalo.jpg",
-      "source_page": "https://www.buffalo.edu/brand/identity/university-logo-and-marks.html",
-      "source_url": "https://www.buffalo.edu/content/www/brand/identity/university-logo-and-marks/jcr:content/par/image_8.img.894.auto.q65.jpg/1762792289978.jpg",
-      "retrieved_at": "2026-10-15T01:59:32.625Z",
-      "bytes": 8033,
-      "sha256": "739b3f71ab1571ec1dcdd4d08a0dab64156e39d063455f9f3f4943f05bdfc771"
+      "path": "static/logos/buffalo.png",
+      "source_page": "https://www.buffalo.edu/brand/resources-tools/downloads.html",
+      "source_url": "https://buffalo.app.box.com/s/7ex15flmkp0ytnlodink16m8jkc6xooi/file/1392341783411",
+      "retrieved_at": "2026-10-15T02:04:45.193Z",
+      "bytes": 69745,
+      "sha256": "89d3d74439582dc93a5c19df91058040b76c6425e22ba9efb3186895f56a4747",
+      "source_filename": "105-UB-Primary-SUNY-RGB-Blue-Gray.png",
+      "width": 2716,
+      "height": 1017
     }
   ]
 }
