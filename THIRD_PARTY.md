@@ -27,6 +27,6 @@ website-template license does not grant additional trademark rights.
 Research videos, figures, and datasets depicted in videos are not
 relicensed by the website-template license. They retain their respective rights.
 This page does not redistribute any dataset archives, training environments,
-credentials, or raw experiments. The public research-code URL and arXiv
-identifier have not been supplied; no substitute links or acceptance claim are
-fabricated.
+credentials, or raw experiments. The paper is linked on arXiv at
+<https://arxiv.org/abs/2610.17572>. The public research-code URL has not been
+supplied; no substitute link or acceptance claim is fabricated.

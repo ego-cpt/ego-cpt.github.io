@@ -149,7 +149,7 @@ try {
   assert(await evaluate('document.readyState === "complete"'), 'Document not ready');
   assert(await evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Desktop overflow');
   assert(await evaluate('document.querySelectorAll(".institution-logos img").length === 2 && [...document.querySelectorAll(".institution-logos img")].every(i => i.complete && i.naturalWidth > 0)'), 'Affiliation logos not loaded');
-  assert(await evaluate('document.querySelector(".paper-pending")?.disabled && document.querySelector(".paper-pending").textContent.includes("coming soon")'), 'Paper placeholder missing');
+  assert(await evaluate('document.querySelector("a.paper-link")?.href === "https://arxiv.org/abs/2610.17572" && !document.querySelector(".paper-link").textContent.includes("coming soon")'), 'Paper arXiv link missing');
   assert.equal(await evaluate('document.querySelectorAll(".task-comparison").length'), 11);
   assert.deepEqual(await evaluate('[...document.querySelectorAll(".taco-contact-grid .task-comparison")].map(card => card.dataset.task)'),
     ['taco-pour', 'taco-ladle', 'taco-pick', 'taco-lint', 'taco-brush']);
@@ -231,7 +231,7 @@ try {
   assert.deepEqual(errors, [], 'Browser errors');
   const result = {passed: true, checked_at: new Date().toISOString(), desktop_width: 1440, mobile_width: 390, project_subpath: true,
     affiliation_logos: true, comparison_slider: true, comparison_transparency: true,
-    paper_coming_soon: true, task_comparisons: 11, taco_comparisons: 5, featured_contact_details: 2, direct_pointer_drag: true, keyboard_slider: true,
+    paper_arxiv_link: true, task_comparisons: 11, taco_comparisons: 5, featured_contact_details: 2, direct_pointer_drag: true, keyboard_slider: true,
     touch_slider: true, native_video_metadata: videoMetadata,
     copy_feedback: true, gallery_playback: true, reduced_motion: true, browser_errors: errors,
     screenshots: ['desktop.png', 'comparison.png', 'task-comparisons.png', 'taco-comparisons.png', 'results.png', 'mobile.png', 'mobile-comparison.png', 'mobile-taco-comparisons.png']};
